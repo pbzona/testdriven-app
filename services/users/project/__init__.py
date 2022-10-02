@@ -1,14 +1,15 @@
-from json import load
+import os
 from dotenv import load_dotenv
 from flask import Flask, jsonify
 from flask_restful import Resource, Api
 
 load_dotenv()
 
-# instantiate the app
 app = Flask(__name__)
-app.config.from_object('project.config.DevelopmentConfig')
 api = Api(app)
+
+app_settings = os.getenv('APP_SETTINGS')
+app.config.from_object(app_settings)
 
 class UsersPing(Resource):
     def get(self):
