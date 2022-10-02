@@ -1,6 +1,7 @@
 FROM python:3.9.9-alpine
 
 RUN apk update && \
+    apk add build-base && \
     apk add --virtual build-deps gcc python3-dev musl-dev && \
     apk add postgresql-dev && \
     apk add netcat-openbsd
